@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animated-gradient-border {
+  position: relative;
+  padding: 4px;
+  background: transparent;
+}
+
+.animated-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, #ff4ecf, #7d4fff, #3cbaff, #ff4ecf);
+  border-radius: 256px;
+  animation: rotate-gradient 30s linear infinite;
+  z-index: 0;
+  transform-origin: center;
+}
+
+@keyframes rotate-gradient {
+  from {
+    background: conic-gradient(from 0deg, #ff4ecf, #7d4fff, #3cbaff, #ff4ecf);
+  }
+  to {
+    background: conic-gradient(from 360deg, #ff4ecf, #7d4fff, #3cbaff, #ff4ecf);
+  }
+}
