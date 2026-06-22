@@ -1,29 +1,92 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.site-background-video {
+  position: fixed;
+  inset: -2rem;
+  width: calc(100% + 4rem);
+  height: calc(100% + 4rem);
+  object-fit: cover;
+  opacity: 0.72;
+  filter: blur(18px);
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.site-background-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 10, 16, 0.4);
+  pointer-events: none;
+}
+
+.card-shell {
+  background: linear-gradient(
+    145deg,
+    rgba(9, 10, 16, 0.56) 0%,
+    rgba(17, 19, 29, 0.44) 48%,
+    rgba(22, 15, 33, 0.5) 100%
+  );
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
 
 .animated-gradient-border {
-  position: relative;
-  padding: 4px;
-  background: transparent;
+  --border-angle: 0deg;
+  overflow: hidden;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle),
+    #7dd3fc 0deg,
+    #c084fc 110deg,
+    #fda4af 220deg,
+    #7dd3fc 360deg
+  );
+  animation: border-orbit 6s linear infinite;
 }
 
-.animated-gradient-border::before {
+.typewriter::after {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: conic-gradient(from 0deg, #ff4ecf, #7d4fff, #3cbaff, #ff4ecf);
-  border-radius: 256px;
-  animation: rotate-gradient 30s linear infinite;
-  z-index: 0;
-  transform-origin: center;
+  display: inline-block;
+  width: 0.5rem;
+  height: 1.05em;
+  margin-left: 0.18rem;
+  transform: translateY(0.18em);
+  border-right: 2px solid rgba(125, 211, 252, 0.9);
+  animation: caret-blink 0.9s steps(2, start) infinite;
 }
 
-@keyframes rotate-gradient {
-  from {
-    background: conic-gradient(from 0deg, #ff4ecf, #7d4fff, #3cbaff, #ff4ecf);
-  }
+.shoutbox-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(125, 211, 252, 0.35) transparent;
+}
+
+.shoutbox-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.shoutbox-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(125, 211, 252, 0.35);
+}
+
+@keyframes border-orbit {
   to {
-    background: conic-gradient(from 360deg, #ff4ecf, #7d4fff, #3cbaff, #ff4ecf);
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-border,
+  .site-background-video,
+  .typewriter::after {
+    animation: none;
   }
 }
