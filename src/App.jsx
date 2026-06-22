@@ -44,26 +44,6 @@ const profileLinks = [
 const webBadges = [
   { href: 'https://takasaki.moe', label: 'takasaki.moe', image: '/88x31.gif' },
   { href: 'https://otomir23.me', label: 'otomir23.me', image: 'https://otomir23.me/88x31.png' },
-  {
-    label: 'Hacker Webring',
-    parts: [
-      {
-        href: 'https://ring.acab.dev/prev/f50f0a4be1',
-        image: 'https://ring.acab.dev/img/webring_88_31_01.png',
-        alt: 'Hacker Webring previous',
-      },
-      {
-        href: 'https://ring.acab.dev',
-        image: 'https://ring.acab.dev/img/webring_88_31_02.png',
-        alt: 'Hacker Webring',
-      },
-      {
-        href: 'https://ring.acab.dev/next/f50f0a4be1',
-        image: 'https://ring.acab.dev/img/webring_88_31_03.png',
-        alt: 'Hacker Webring next',
-      },
-    ],
-  },
   { href: 'https://ndiuky.top', label: 'ndiuky.top', image: 'https://ndiuky.top/88x31.png' },
 ]
 
