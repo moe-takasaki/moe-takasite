@@ -18,6 +18,12 @@ const AnimatedCard = motion.div
 const shoutboxClientKey = 'mycard:shoutbox-client'
 const shoutboxAdminSessionKey = 'mycard:shoutbox-admin-code'
 const listeningRefreshMs = 30_000
+const buildTimestamp = import.meta.env.VITE_BUILD_TIMESTAMP || 'dev'
+const buildCommit = import.meta.env.VITE_BUILD_COMMIT || ''
+const buildCommitShort = import.meta.env.VITE_BUILD_COMMIT_SHORT || 'unknown'
+const buildCommitUrl = buildCommit
+  ? `https://github.com/moe-takasaki/moe-takasite/commit/${buildCommit}`
+  : 'https://github.com/moe-takasaki/moe-takasite'
 let visitorNumberRequest = null
 const reactionOptions = [
   { value: '❤️', label: 'Heart', icon: heartEmoji },
@@ -254,6 +260,18 @@ function SiteFooter({ clientId }) {
           className="text-sky-200/80 transition hover:text-sky-100"
         >
           两天醒一次
+        </a>
+      </p>
+      <p>
+        Built: <span className="font-mono text-slate-400">{buildTimestamp}</span> | Commit{' '}
+        <a
+          href={buildCommitUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 font-mono text-sky-200/80 transition hover:text-sky-100"
+        >
+          <FaGithub aria-hidden="true" />
+          {buildCommitShort}
         </a>
       </p>
     </footer>
