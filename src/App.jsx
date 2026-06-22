@@ -58,6 +58,7 @@ const webBadges = [
       },
     ],
   },
+  { href: 'https://ndiuky.top', label: 'ndiuky.top', image: 'https://ndiuky.top/88x31.png' },
 ]
 
 const roles = [
