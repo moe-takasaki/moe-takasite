@@ -467,6 +467,35 @@ function BadgeWall() {
   )
 }
 
+function ShoutboxOfflineState() {
+  return (
+    <div className="grid min-h-64 place-items-center rounded-xl border border-white/5 bg-[#0d1019] px-6 py-6 text-center">
+      <div className="flex flex-col items-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-rose-100/75">
+          NO SIGNAL
+        </p>
+        <svg
+          viewBox="0 0 160 120"
+          role="img"
+          aria-label="Offline terminal"
+          className="my-3 h-28 w-auto max-w-full drop-shadow-2xl"
+        >
+          <rect x="22" y="18" width="116" height="78" rx="12" fill="#101826" stroke="#314052" strokeWidth="4" />
+          <rect x="34" y="30" width="92" height="42" rx="4" fill="#06101d" />
+          <path d="M45 50h22M75 50h10M94 50h20" stroke="#7dd3fc" strokeWidth="5" strokeLinecap="round" />
+          <path d="M53 83h54" stroke="#263445" strokeWidth="7" strokeLinecap="round" />
+          <path d="M62 104h36" stroke="#314052" strokeWidth="7" strokeLinecap="round" />
+          <path d="M101 41l16 18M117 41l-16 18" stroke="#fda4af" strokeWidth="6" strokeLinecap="round" />
+          <path d="M19 28l8 8M139 84l8 8M132 24l10-6" stroke="#c084fc" strokeWidth="4" strokeLinecap="round" />
+        </svg>
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
+          SHOUTBOX OFFLINE. BRB..
+        </p>
+      </div>
+    </div>
+  )
+}
+
 function Shoutbox({ clientId }) {
   const [adminCode, setAdminCode] = useState(getSavedAdminCode)
   const [showAdminControl, setShowAdminControl] = useState(false)
@@ -479,6 +508,7 @@ function Shoutbox({ clientId }) {
   const [message, setMessage] = useState('')
   const [replyDrafts, setReplyDrafts] = useState({})
   const isAdmin = Boolean(adminCode)
+  const isOffline = error === 'shoutbox offline'
 
   useEffect(() => {
     function updateAdminControl(event) {
@@ -809,11 +839,12 @@ function Shoutbox({ clientId }) {
             <FaPaperPlane aria-hidden="true" />
           </button>
 
-          {error ? <p className="text-xs text-rose-200">{error}</p> : null}
+          {error && !isOffline ? <p className="text-xs text-rose-200">{error}</p> : null}
         </form>
 
         <div className="shoutbox-scroll max-h-[28rem] space-y-2 overflow-y-auto pr-1">
           {loading ? <p className="px-1 text-xs text-slate-500">loading...</p> : null}
+          {!loading && isOffline ? <ShoutboxOfflineState /> : null}
           {!loading && !error && shouts.length === 0 ? (
             <div className="grid min-h-64 place-items-center rounded-xl border border-white/5 bg-[#0d1019] px-6 py-6 text-center">
               <div className="flex flex-col items-center">
