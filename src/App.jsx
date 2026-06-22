@@ -1037,8 +1037,15 @@ export default function CardLanding() {
                     I am <span className="font-mono text-sky-100">{age}</span> y.o.
                   </p>
                   <p>
-                    Current location:{' '}
-                    <span className="break-all font-mono text-sky-100">somewhere in 3056352259809</span>{' '}
+                    Current location: somewhere in{' '}
+                    <a
+                      href="https://bgp.tools/as/24940"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="break-all font-mono text-sky-100 underline-offset-2 hover:underline"
+                    >
+                      AS24940
+                    </a>{' '}
                   </p>
                 </div>
               </section>
