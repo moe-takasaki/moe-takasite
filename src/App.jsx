@@ -45,6 +45,7 @@ const webBadges = [
   { href: 'https://takasaki.moe', label: 'takasaki.moe', image: '/88x31.gif' },
   { href: 'https://otomir23.me', label: 'otomir23.me', image: 'https://otomir23.me/88x31.png' },
   { href: 'https://ndiuky.top', label: 'ndiuky.top', image: 'https://ndiuky.top/88x31.png' },
+  { href: 'https://nichind.dev', label: 'nichind.dev', image: 'https://nichind.dev/88x31.gif' },
 ]
 
 const roles = [
